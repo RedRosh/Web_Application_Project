@@ -1,18 +1,18 @@
 // for use mongo DB and mongoose
+const mongoose = require("mongoose");
 
-const mongoose = require ('mongoose')
+// connect the DB
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.URI_Mongo);
+    // to print message after connect
+    console.log(
+      `DB are Connected On MongoDB : ${conn.connection.host}`.cyan.underline
+    );
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+};
 
-// connect the DB 
-
-const connectDB = async () =>{
-    try{
-        const conn=await mongoose.connect(process.env.URI_Mongo)
-        // to print message after connect 
-        console.log(`DB are Connected On MongoDB : ${conn.Connection.host}`.cyan.underline)
-    } catch(error){
-        console.log(error);
-        process.exit(1)
-    }
-}
-
-module.exports=connectDB
+module.exports = connectDB;
