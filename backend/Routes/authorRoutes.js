@@ -10,9 +10,11 @@ const {
 
 // to protect Info Page of author
 const { protect } = require("../middleware/auth");
-router.post("/", registerAuthor);
-router.post("/login", loginAuthor);
-router.get("/info", protect, getAuthor);
+
+router
+  .post("/", registerAuthor)
+  .post("/login", loginAuthor)
+  .get("/info", protect, getAuthor);
 
 // Gate for use any function here
 module.exports = router;

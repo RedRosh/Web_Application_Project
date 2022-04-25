@@ -2,7 +2,7 @@
 const jwt = require("jsonwebtoken");
 // to hash password
 const bcrypt = require("bcryptjs");
-// async handeller
+// async handler
 const asyncHandler = require("express-async-handler");
 // to use author model
 const Author = require("../model/authorModel");
@@ -10,7 +10,7 @@ const { json } = require("express/lib/response");
 
 //------------------register---------------------------//
 
-// to register author or user >> /api/authors >> post methode
+// to register author or user >> /api/authors >> post method
 const registerAuthor = asyncHandler(async (req, res) => {
   const { name, project_title, email, password } = req.body;
   if (!name || !project_title || !email || !password) {
@@ -51,10 +51,10 @@ const registerAuthor = asyncHandler(async (req, res) => {
 
 //------------------login---------------------------//
 
-// to login author or user >> /api/authors/login >> post methode
+// to login author or user >> /api/authors/login >> post method
 const loginAuthor = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-  // ckeck user email
+  // check user email
   const author = await Author.findOne({ email });
   // compare the password with password in DB
   if (author && (await bcrypt.compare(password, author.password))) {
@@ -75,7 +75,7 @@ const loginAuthor = asyncHandler(async (req, res) => {
 
 //------------------Get Info >> Private---------------------------//
 
-// to Get author or user Data >> /api/authors/info >> GET methode
+// to Get author or user Data >> /api/authors/info >> GET method
 const getAuthor = asyncHandler(async (req, res) => {
   const { _id, name, project_title, email } = await Author.findById(
     req.author.id
@@ -88,7 +88,7 @@ const getAuthor = asyncHandler(async (req, res) => {
   });
 });
 
-//--------------------Jenerate Token-------------------------//
+//--------------------Generate Token-------------------------//
 const genToken = (id) => {
   return jwt.sign({ id }, process.env.Secret_Key, {
     expiresIn: "30d",

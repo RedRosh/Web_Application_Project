@@ -5,7 +5,7 @@ const asyncHandler = require("express-async-handler");
 const Projects = require("../model/projectModel");
 const Author = require("../model/authorModel");
 
-// control the GET method - routes - access privatly >> GET /api/projects
+// control the GET method - routes - access privately >> GET /api/projects
 const getProject = asyncHandler(async (req, res) => {
   const projects = await Projects.find({ author: req.author.id });
   if (!projects) {
@@ -14,7 +14,7 @@ const getProject = asyncHandler(async (req, res) => {
   res.status(200).json({ projects });
 });
 
-// control the POST method for create - routes - access privatly >> POST /api/projects
+// control the POST method for create - routes - access privately >> POST /api/projects
 const creatProject = asyncHandler(async (req, res) => {
   const { title, author, description, id } = req.body;
   let project = new Projects({
