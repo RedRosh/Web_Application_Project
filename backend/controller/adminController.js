@@ -23,7 +23,21 @@ const getProjects = asyncHandler(async (req, res) => {
   res.status(200).json({ projects });
 });
 
+// control the PUT method - routes - access privately - only Admin  >> GET /api/admin/authors/:id
+const setAdmin = asyncHandler(async (req, res) => {
+  const author = await Author.findByIdAndUpdate(
+    { _id: req.params.id },
+    { role: "ADMIN" },
+    { new: true }
+  );
+  if (!author) {
+    return res.status(404).send("No Author Found");
+  }
+  res.status(200).json({ author });
+});
+
 module.exports = {
   getAuthors,
   getProjects,
+  setAdmin,
 };

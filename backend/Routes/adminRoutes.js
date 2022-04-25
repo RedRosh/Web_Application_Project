@@ -2,7 +2,11 @@
 const express = require("express");
 
 const router = express.Router();
-const { getAuthors, getProjects } = require("../controller/adminController");
+const {
+  getAuthors,
+  getProjects,
+  setAdmin,
+} = require("../controller/adminController");
 
 // to protect Info Page of author
 const { protect } = require("../middleware/auth");
@@ -11,7 +15,8 @@ const { protect } = require("../middleware/auth");
 const { requireAdmin } = require("../middleware/authorization");
 router
   .get("/projects", protect, requireAdmin, getProjects)
-  .get("/authors", protect, requireAdmin, getAuthors);
+  .get("/authors", protect, requireAdmin, getAuthors)
+  .put("/authors/:id", protect, requireAdmin, setAdmin);
 
 // Gate for use any function here
 module.exports = router;
