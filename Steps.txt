@@ -1,0 +1,23 @@
+the file of gitignore ... > not initialize repostory and secret file >> disapear its content 
+
+change test to start ...> node backend/server.js >> becouse server.js inside backend folder 
+other copy change test to server "start": "node backend/server.js" >> this for run 
+
+initialize git
+
+npm run server >> to run server 
+
+-----------------------
+
+creates routes
+ اساسيات التحكم في الميثود الي راح نستخدمها في ملف الكنترول والاستدعاء في ملف الراوت
+
+ -----------------------
+ change the defult form of response for error handler
+
+ -----------------------
+
+ opent MongoDB and connect
+
+ ---------------
+ put secret key for the token
