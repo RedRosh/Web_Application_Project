@@ -20,6 +20,7 @@ app.use(errorHandler); // call error handel middileware
 
 app.use("/api/projects", require("./Routes/projectsRoutes")); // Basic Routes for page projects
 app.use("/api/authors", require("./Routes/authorRoutes"));
+app.use("/api/admin", require("./Routes/adminRoutes"));
 
 // create listen object نستدعي الداله لفتح البورت واستدعى المتغير الي خزن البورت فيه
 //'Server is Started on 6000' مجرد رسالة طباعة
